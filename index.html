@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Playground</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="welcome" id="welcomePage">
+    <h1 class="welcome-title">Welcome to Pixel Playground!</h1>
+    <p class="welcome-text">Unleash your creativity with hex codes and pixels.</p>
+    <button id="startBtn" class="start-btn">Start Exploring</button>
+  </div>
+  <div class="container" id="mainApp" style="display: none;">
+    <div class="header">
+      <h1 class="title">Pixel Playground</h1>
+      <div class="controls">
+        <button id="soundToggle" class="theme-btn" title="Toggle Sound">🔊</button>
+        <button id="themeToggle" class="theme-btn" title="Toggle Theme">🌙</button>
+      </div>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn active" data-page="hex-extractor">Hex Extractor</button>
+      <button class="nav-btn" data-page="color-picker">Color Picker</button>
+    </nav>
+
+    <!-- Hex Extractor Page -->
+    <div id="hex-extractor" class="page active">
+      <p class="subtitle">Upload a 32x32 image and conquer the hexes!</p>
+      <div class="upload-section">
+        <input type="file" id="imageInput" accept="image/*" class="upload-input">
+        <label for="imageInput" class="upload-btn" title="Upload a 32x32 image">Choose Image</label>
+        <button id="toggleView" class="action-btn" title="Switch between list and grid view">Toggle Grid View</button>
+      </div>
+      <div class="progress-section">
+        <div id="stopwatch" class="stopwatch">Time: 00:00</div>
+        <div class="progress-bar">
+          <div id="progress" class="progress-fill"></div>
+        </div>
+        <span id="progressText">0/16 Sections Complete</span>
+      </div>
+      <div class="content">
+        <canvas id="canvas" width="32" height="32"></canvas>
+        <div id="hexContainer" class="hex-container">
+          <div id="hexList" class="hex-list"></div>
+          <div id="hexGrid" class="hex-grid" style="display: none;">
+            <div id="sectionIndicator" class="section-indicator"></div>
+            <div id="gridContent" class="grid-content"></div>
+          </div>
+        </div>
+      </div>
+      <div id="popup" class="popup"></div>
+    </div>
+
+    <!-- Color Picker Page -->
+    <div id="color-picker" class="page">
+      <p class="subtitle">Click the canvas to pick colors from your image!</p>
+      <div class="upload-section">
+        <input type="file" id="pickerImageInput" accept="image/*" class="upload-input">
+        <label for="pickerImageInput" class="upload-btn" title="Upload an image to pick colors">Choose Image</label>
+      </div>
+      <div class="content">
+        <canvas id="pickerCanvas" width="32" height="32"></canvas>
+        <div id="pickedColor" class="color-display"></div>
+      </div>
+    </div>
+  </div>
+  <canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; pointer-events: none;"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
